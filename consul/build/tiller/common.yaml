@@ -1,5 +1,10 @@
+consul:
+  url: "http://localhost:8500"
+  dc: "dc1"
+  register_services: false
+  register_nodes: false
 exec: [ "cat" , "/tmp/test"]
-data_sources: [  "defaults", "file"]
+data_sources: [  "defaults", "file","consul"]
 template_sources: [ "file" ]
 defaults:
   test.erb:
@@ -11,7 +16,7 @@ environments:
   production:
     test.erb:
       config:
-        should_be_overriden: 'production'
+        should_be_overriden: 'production_env'
   development:
     global_values:
-      should_be_overriden: 'development'
+      should_be_overriden: 'development_env'
