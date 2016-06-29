@@ -1,5 +1,5 @@
 exec: [ "cat" , "/tmp/test"]
-data_sources: [  "defaults", "file"]
+data_sources: [  "defaults", "file","environment"]
 template_sources: [ "file" ]
 defaults:
   test.erb:
@@ -9,11 +9,9 @@ defaults:
       should_be_overriden: 'global'
 environments:
   production:
-    config:
-      should_be_overriden: 'production'
-  staging:
-    config:
-      should_be_overriden: 'staging'
+    test.erb:
+      config:
+        should_be_overriden: 'production'
   development:
     global_values:
       should_be_overriden: 'development'
