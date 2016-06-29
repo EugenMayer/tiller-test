@@ -1,0 +1,19 @@
+exec: [ "cat" , "/tmp/test"]
+data_sources: [  "defaults", "file"]
+template_sources: [ "file" ]
+defaults:
+  test.erb:
+    target: /tmp/test
+    config:
+      global_val: '1'
+      should_be_overriden: 'global'
+environments:
+  production:
+    config:
+      should_be_overriden: 'production'
+  staging:
+    config:
+      should_be_overriden: 'staging'
+  development:
+    global_values:
+      should_be_overriden: 'development'
