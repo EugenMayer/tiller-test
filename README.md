@@ -8,7 +8,7 @@ cd tiller-test/consul
 docker-compose up
 ```
 
-Current issuet:
+Current issuet: https://github.com/markround/tiller/issues/32
 
 ### datasourcemerge
 
