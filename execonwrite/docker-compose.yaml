@@ -1,0 +1,9 @@
+version: '2'
+services:
+  tiller:
+    build:
+      context: ./build
+    container_name: tiller
+    image: eugenmayer/tiller-test:execonwrite
+    volumes:
+      - ./build/tiller:/etc/tiller

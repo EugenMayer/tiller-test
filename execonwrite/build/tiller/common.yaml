@@ -1,0 +1,27 @@
+data_sources: [ "defaults", "file", "environment" ]
+
+md5sum: true
+md5sum_noexec: true
+
+template_sources: [ "file" ]
+
+exec: [ "cat" , "/tmp/exec"]
+
+defaults:
+  exec.erb:
+    target: /tmp/exec
+    config:
+      some: 'value'
+  execonwrite.erb:
+    exec_on_write: [ "cat" , "/tmp/execonwrite"]
+    target: /tmp/execonwrite
+    config:
+      some: 'value'
+environments:
+  production:
+    test.erb:
+      config:
+        should_be_overriden: 'production'
+  development:
+    global_values:
+      should_be_overriden: 'development'
