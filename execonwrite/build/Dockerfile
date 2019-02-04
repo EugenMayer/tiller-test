@@ -6,17 +6,15 @@ RUN apt-get update && apt-get -y upgrade \
 COPY tiller /etc/tiller
 COPY entrypoint.sh /entrypoint.sh
 
-#RUN gem install tiller
-RUN cd /tmp \
- && git clone https://github.com/markround/tiller --branch develop \
- && cd tiller \
+RUN cd / \
+ && git clone https://github.com/markround/tiller --branch develop tiller_source \
+ && cd tiller_source \
  && git branch \
  && gem build tiller.gemspec \
- && gem install *.gem
+ && mv tiller-*.gem tiller-source.gem
 
 RUN  chmod +x /entrypoint.sh
 
-
 ENV tiller_test_value=1
-
 ENTRYPOINT ["/entrypoint.sh"]
+

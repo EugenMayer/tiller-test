@@ -7,3 +7,13 @@ services:
     image: eugenmayer/tiller-test:execonwrite
     volumes:
       - ./build/tiller:/etc/tiller
+    environment:
+      use_develop: 'false'
+
+  tiller_dev:
+    container_name: tiller_dev
+    image: eugenmayer/tiller-test:execonwrite
+    volumes:
+      - ./build/tiller:/etc/tiller
+    environment:
+      use_develop: 'true'
