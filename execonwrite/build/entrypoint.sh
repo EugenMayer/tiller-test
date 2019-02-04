@@ -34,6 +34,15 @@ echo
 
 tiller -v -d
 
+# this case should not trigger any exec also, since we run the same templates without changing any dynamic values
+echo "************************************************************************************************** "
+echo "***************************************** FOURTH-RUN: cleaned template - should exec *************"
+echo "************************************************************************************************** "
+echo
+
+rm /tmp/withenv /tmp/static /tmp/execonwrite /tmp/codeblock /tmp/exec
+tiller -v -d
+
 shutdown ()
 {
   echo "shutdown"
