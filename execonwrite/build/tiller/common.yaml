@@ -5,6 +5,10 @@ md5sum_noexec: true
 
 template_sources: [ "file" ]
 
+environment:
+  prefix: 'env_'
+  lowercase: true
+
 exec: [ "cat" , "/tmp/exec"]
 
 defaults:
@@ -17,6 +21,19 @@ defaults:
     target: /tmp/execonwrite
     config:
       some: 'value'
+  withenv.erb:
+    exec_on_write: [ "cat" , "/tmp/withenv"]
+    target: /tmp/withenv
+    config:
+      some_value: 'value123'
+  codeblock.erb:
+    exec_on_write: [ "cat" , "/tmp/codeblock"]
+    target: /tmp/codeblock
+    config:
+      some_value: 'value123'
+  static.erb:
+    exec_on_write: [ "cat" , "/tmp/static"]
+    target: /tmp/static
 environments:
   production:
     test.erb:
